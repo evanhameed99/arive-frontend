@@ -1,6 +1,6 @@
 import { triggerReducer, ACTION_TYPES } from '../constants/actiontypes';
 
-import { axiosGet } from './axios'
+import { axiosGet, axiosPost } from './axios'
 
 
 
@@ -17,3 +17,22 @@ export const getAllUsers = () => (dispatch: any) => new Promise((resolve, reject
         )
     // dispatch(triggerReducer(ACTION_TYPES.GET_ALL_USERS));
 })
+
+
+export const createUserAction = (data: any) => (dispatch: any) => new Promise((resolve, reject) => {
+    console.log('data inside action', data)
+    axiosPost('/users/create', data)
+        .then((res: any) => {
+            console.log('the res', res)
+            getAllUsers()(dispatch);
+            resolve(res.result);
+            // dispatch(triggerReducer(ACTION_TYPES.CREATE_USER, { data: res.result }));
+        }
+        )
+        .catch((err: any) => {
+            reject(err);
+        }
+        )
+
+})
+

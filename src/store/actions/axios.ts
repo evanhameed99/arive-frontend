@@ -34,28 +34,19 @@ export function axiosGet(url: string, params = {}) {
 //   });
 // }
 
-// export function axiosPost(url, body = {}, header = {}) {
-//   return new Promise((resolve, reject) => {
-//     const { user } = store.getState();
-//     let config = {};
-//     if (user) {
-//       config = {
-//         headers: {
-//           'jwt-token': user.token || '',
-//           'Content-Type': 'application/json',
-//           ...header,
-//         },
-//       };
-//     }
-//     Axios.post(ADMIN_API_URL + url, body, config)
-//       .then((res) => {
-//         resolve(res.data);
-//       })
-//       .catch((err) => {
-//         reject(err);
-//       });
-//   });
-// }
+export function axiosPost(url: string, body = {}, header = {}) {
+    return new Promise((resolve, reject) => {
+        let config = {};
+
+        Axios.post('https://arrive-rest-api.herokuapp.com' + url, body, config)
+            .then((res) => {
+                resolve(res.data);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+    });
+}
 
 // export function axiosPut(url, body = {}, header = {}) {
 //   return new Promise((resolve, reject) => {

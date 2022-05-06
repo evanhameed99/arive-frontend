@@ -1,84 +1,46 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/main/mainTable.css'
 import UserList from './userList'
 import { connect } from 'react-redux';
-import { getAllUsers } from '../store/actions/users';
+import { getAllUsers, createUserAction } from '../store/actions/users';
 
 interface Props {
     users: any[]
-    getAllUsers: () => void
+    getAllUsers: () => void,
+    createUserAction: (data: { name: string }) => any,
 }
 
-const users = [
-    {
-        name: 'John',
-        _id: 30,
-    },
-    {
-        name: 'Jane',
-        _id: 25,
-    },
-    {
-        name: 'Jill',
-        _id: 323,
-    },
-    {
-        name: 'Jack',
-        _id: 40,
-    },
-    {
-        name: 'Jack',
-        _id: 312312,
-    },
-    {
-        name: 'Jack',
-        _id: 43213120,
-    },
-    {
-        name: 'Jack',
-        _id: 412320,
-    },
-    {
-        name: 'Jill',
-        _id: 35,
-    },
-    {
-        name: 'Jill',
-        _id: 35,
-    },
-    {
-        name: 'Jill',
-        _id: 35,
-    },
-    {
-        name: 'Jill',
-        _id: 35,
-    },
-    {
-        name: 'Jill',
-        _id: 35,
-    },
-    {
-        name: 'Jill',
-        _id: 35,
-    },
+const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
 
-]
-const Users: React.FC<Props> = ({ users , getAllUsers }) => {
+    const [input, setInput] = useState<string>('');
 
     useEffect(() => {
-        console.log('hello')
         getAllUsers();
     }, [])
 
-    console.log('usersssssss', users)
+
+    const onInoutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInput(e.target.value);
+    }
+
+    const createUser = (e: React.FormEvent<HTMLFormElement>) => {
+        console.log('cliecked')
+        e.preventDefault();
+        if (input !== '') {
+            createUserAction({ name: input }).then(() => {
+                console.log('inside then ')
+                setInput('')
+            })
+        }
+    }
+
     return (
         <div className='mainUsers'>
-            <form className='form'>
-                <input className='userInput' placeholder='Create User'></input>
-                <button className='addBtn'>Add</button>
+            <form className='form' onSubmit={createUser}>
+                <input value={input} onChange={onInoutChange} className='userInput' placeholder='Create User'></input>
+                <button type='submit' className='addBtn'>Add</button>
             </form>
-            <UserList  users= {users}/>
+            <UserList users={users} />
         </div>
     )
 }
@@ -88,7 +50,8 @@ const mapStateToProps = (store: any) => ({
 });
 
 const mapDispatchToProps = {
-    getAllUsers: getAllUsers
+    getAllUsers: getAllUsers,
+    createUserAction: createUserAction
 };
 
 
