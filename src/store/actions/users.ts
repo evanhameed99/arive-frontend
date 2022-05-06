@@ -26,7 +26,6 @@ export const createUserAction = (data: any) => (dispatch: any) => new Promise((r
             console.log('the res', res)
             getAllUsers()(dispatch);
             resolve(res.result);
-            // dispatch(triggerReducer(ACTION_TYPES.CREATE_USER, { data: res.result }));
         }
         )
         .catch((err: any) => {
@@ -36,3 +35,8 @@ export const createUserAction = (data: any) => (dispatch: any) => new Promise((r
 
 })
 
+
+
+export const selectUser = (user : string | null) => (dispatch: any) => {
+    dispatch(triggerReducer(ACTION_TYPES.SELECT_USER, { data : user }));
+}

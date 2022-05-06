@@ -1,17 +1,20 @@
 import classNames from 'classnames'
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import '../styles/main/mainTable.css'
+import { selectUser } from '../store/actions/users'
 interface Props {
     users: any[]
+    selectedUser: string | null
+    selectUser: (id: string) => void
 }
 
-const UserList: React.FC<Props> = ({ users }) => {
+const UserList: React.FC<Props> = ({ users, selectedUser , selectUser }) => {
+    console.log('selectedUser', selectedUser)
 
-    const [id, selectedId] = useState('')
 
-    const onItemClick  = (id : string) => {
-        console.log('clicked' , id)
-        selectedId(id)
+    const onItemClick = (id: string) => {
+        selectUser(id)
     }
     return (
         <div className='usersList'>
@@ -19,7 +22,7 @@ const UserList: React.FC<Props> = ({ users }) => {
                 users.map((user, index) => {
                     return (
                         <ul className='usersUl'  >
-                            <li className={classNames('' , { 'liClicked' : id == user._id})} onClick={()=> onItemClick(user._id)} key={user._id} >{user.name}</li>
+                            <li className={classNames('', { 'liClicked': selectedUser == user._id })} onClick={() => onItemClick(user._id)} key={user._id} >{user.name}</li>
                         </ul>
                     )
                 })
@@ -28,4 +31,13 @@ const UserList: React.FC<Props> = ({ users }) => {
     )
 }
 
-export default UserList
+const mapStateToProps = (store: any) => ({
+    selectedUser: store.users.selectedUser,
+});
+
+const mapDispatchToProps = {
+    selectUser: selectUser
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);

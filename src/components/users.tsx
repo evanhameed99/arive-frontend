@@ -13,7 +13,7 @@ interface Props {
 const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
 
     const [input, setInput] = useState<string>('');
-
+    console.log('users in comp', users)
     useEffect(() => {
         getAllUsers();
     }, [])
@@ -46,7 +46,7 @@ const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
 }
 
 const mapStateToProps = (store: any) => ({
-    users: store.users,
+    users: store.users.users,
 });
 
 const mapDispatchToProps = {
