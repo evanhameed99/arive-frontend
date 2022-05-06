@@ -8,11 +8,12 @@ const defaultState = {
 };
 
 export const users = (state = defaultState, action: any) => {
-    const { type, data } = action;
+    const { type , data } = action;
     switch (type) {
         case ACTION_TYPES.GET_ALL_USERS:
-            return state.users;
+            console.log('data inside the reducer', data)
+            return state.users = data;
         default:
-            return state;
+            return state.users;
     }
 }

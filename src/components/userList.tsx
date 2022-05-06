@@ -5,7 +5,6 @@ interface Props {
 }
 
 const UserList: React.FC<Props> = ({ users }) => {
-    console.log('usersss' , users)
     return (
         <div className='usersList'>
             {

@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/main/mainTable.css'
 import UserList from './userList'
+import { connect } from 'react-redux';
+import { getAllUsers } from '../store/actions/users';
+
+interface Props {
+    users: any[]
+    getAllUsers: () => void
+}
 
 const users = [
     {
@@ -57,7 +64,14 @@ const users = [
     },
 
 ]
-const Users = () => {
+const Users: React.FC<Props> = ({ users , getAllUsers }) => {
+
+    useEffect(() => {
+        console.log('hello')
+        getAllUsers();
+    }, [])
+
+    console.log('usersssssss', users)
     return (
         <div className='mainUsers'>
             <form className='form'>
@@ -69,4 +83,13 @@ const Users = () => {
     )
 }
 
-export default Users
+const mapStateToProps = (store: any) => ({
+    users: store.users,
+});
+
+const mapDispatchToProps = {
+    getAllUsers: getAllUsers
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Users);
