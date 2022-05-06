@@ -1,0 +1,9 @@
+
+@import '../variables.scss';
+.mainTable {
+    width: 70%;
+    height: 50%;
+    border-collapse: collapse;
+    background-color: $primaryColor;
+    font-family: $general-font;
+}

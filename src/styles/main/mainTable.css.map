@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,UAAU,CAAC;EACP,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;EACX,eAAe,EAAE,QAAQ;EACzB,gBAAgB,ECJL,OAAO;EDKlB,WAAW,ECDA,KAAK,EAAE,SAAS,EAAE,UAAU;CDE1C",
+    "sources": [
+        "maintable.scss",
+        "../variables.scss"
+    ],
+    "names": [],
+    "file": "maintable.css"
+}
