@@ -16,7 +16,7 @@ interface Props {
 
 const Hobbies: React.FC<Props> = ({ selectedUser, getUserHobbies, hobbies, createUserHobbie }) => {
     const [name, setName] = useState<string>('');
-    const [passionLevel, setPassionLevel] = useState<string>('Passion Level');
+    const [passionLevel, setPassionLevel] = useState<string>('low');
     const [year, setYear] = useState<number>(0);
 
     useEffect(() => {
@@ -58,7 +58,7 @@ const Hobbies: React.FC<Props> = ({ selectedUser, getUserHobbies, hobbies, creat
             <form className='form' onSubmit={onAddHobbie}>
                 <input required value={name} className='formInput' placeholder='Hobbie name' onChange={(e) => setName(e.target.value)}></input>
                 <select required className='formInput' onChange={(e) => setPassionLevel(e.target.value)} defaultValue={passionLevel}>
-                    <option value="Passion Level" disabled >Passion Level</option>
+                    <option selected value="Passion Level" disabled >Passion Level</option>
                     <option value='low'>Low</option>
                     <option value='medium'>Medium</option>
                     <option value='high'>High</option>
