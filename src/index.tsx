@@ -20,7 +20,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)))
+export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)))
 root.render(
   <React.StrictMode>
     <Provider store={store}>
