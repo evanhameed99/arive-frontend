@@ -4,13 +4,9 @@ import '../styles/main/mainTable.css';
 import HobbiesList from './hobbiesList';
 import { getUserHobbies, createUserHobbie } from '../store/actions/hobbies';
 import { ShowNotification } from '../utils/popover';
+import { IHobbie } from '../Interfaces/hobbie';
 
-interface IHobbie {
-    name: string,
-    passionLevel: string,
-    year: number
-    userId: string
-}
+
 interface Props {
     hobbies: any[]
     getUserHobbies: (userId: string) => void,
