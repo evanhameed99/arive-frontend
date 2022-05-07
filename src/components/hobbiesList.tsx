@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import '../styles/main/mainTable.css'
 import { selectHobbie ,deleteUserHobbie} from '../store/actions/hobbies'
 import classNames from 'classnames'
+import { ShowNotification } from '../utils/popover'
 
 interface IDeleteHobbie {
     hobbieId: string
@@ -13,7 +14,7 @@ interface Props {
     selectHobbie: (id: string) => void,
     selectedHobbie: string | null,
     selectedUser: string | null,
-    deleteUserHobbie: (data: IDeleteHobbie) => void
+    deleteUserHobbie: (data: IDeleteHobbie) => any
 }
 
 const HobbiesList: React.FC<Props> = ({ hobbies, selectHobbie, selectedHobbie, selectedUser, deleteUserHobbie }) => {
@@ -27,7 +28,11 @@ const HobbiesList: React.FC<Props> = ({ hobbies, selectHobbie, selectedHobbie, s
         console.log('REMOVE HOBBIE ')
         console.log('selectedHobbie', selectedHobbie)
         if (selectedUser) {
-            deleteUserHobbie({ hobbieId: id, userId: selectedUser })
+            deleteUserHobbie({ hobbieId: id, userId: selectedUser }).then(() => {
+                ShowNotification('Successfull', 'Hobbie deleted successfully', 'success', 2000)
+            }).catch(() => {
+                ShowNotification('Something went wrong', 'Hobbie deletion failed', 'danger', 2000)
+            })
         }
 
     }

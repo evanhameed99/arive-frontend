@@ -50,7 +50,10 @@ const Hobbies: React.FC<Props> = ({ selectedUser, getUserHobbies, hobbies, creat
                 setName('')
                 setPassionLevel('Passion Level')
                 setYear(0)
-            }).catch(() => { })
+                ShowNotification('Successfull', 'Hobbie created successfully', 'success', 2000)
+            }).catch(() => {
+                ShowNotification('Something went wrong', 'Hobbie creation failed', 'danger', 2000)
+             })
 
         }
 
