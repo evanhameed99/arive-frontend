@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import '../styles/main/mainTable.css';
 import HobbiesList from './hobbiesList';
 import { getUserHobbies, createUserHobbie } from '../store/actions/hobbies';
+import { ShowNotification } from '../utils/popover';
 
 interface IHobbie {
     name: string,
@@ -31,11 +32,11 @@ const Hobbies: React.FC<Props> = ({ selectedUser, getUserHobbies, hobbies, creat
     }, [selectedUser])
 
     const onAddHobbie = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        console.log('name', name);
-        console.log('passionLevel', passionLevel);
-        console.log('year', year);
-        console.log('selectedUser', selectedUser);
+        e.preventDefault();
+
+        if (!selectedUser) {
+            ShowNotification('Warning', 'Please select a user', 'warning', 2000)
+        }
 
         if (name && passionLevel !== 'Passion Level' && year && selectedUser) {
             console.log('inside condition')
@@ -60,7 +61,7 @@ const Hobbies: React.FC<Props> = ({ selectedUser, getUserHobbies, hobbies, creat
         <div className='mainHobbies'>
             <form className='form' onSubmit={onAddHobbie}>
                 <input required value={name} className='formInput' placeholder='Hobbie name' onChange={(e) => setName(e.target.value)}></input>
-                <select  required className='formInput' onChange={(e) => setPassionLevel(e.target.value)} defaultValue={passionLevel}>
+                <select required className='formInput' onChange={(e) => setPassionLevel(e.target.value)} defaultValue={passionLevel}>
                     <option value="Passion Level" disabled >Passion Level</option>
                     <option value='low'>Low</option>
                     <option value='medium'>Medium</option>
