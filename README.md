@@ -1,5 +1,5 @@
 
-# Arive FE
+# Hobbies Web App
 
 A simple UI to create users and create relative hobbies form them. [Live Demo](https://arive-hobbies.netlify.app)
 
