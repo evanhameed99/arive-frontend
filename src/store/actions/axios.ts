@@ -17,22 +17,21 @@ export function axiosGet(url: string, params = {}) {
     });
 }
 
-// export function axiosDelete(url, params = {}) {
-//   return new Promise((resolve, reject) => {
-//     const { user } = store.getState();
-//     const config = {
-//       headers: { 'jwt-token': user.token, 'Content-Type': 'application/json' },
-//       params: { ...params },
-//     };
-//     Axios.delete(ADMIN_API_URL + url, config)
-//       .then((res) => {
-//         resolve(res.data);
-//       })
-//       .catch((err) => {
-//         reject(err);
-//       });
-//   });
-// }
+export function axiosDelete(url:string, params = {}) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: { },
+      params: { ...params },
+    };
+    Axios.delete('http://localhost:4000' + url, config)
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+}
 
 export function axiosPost(url: string, body = {}, header = {}) {
     return new Promise((resolve, reject) => {

@@ -1,37 +1,53 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import '../styles/main/mainTable.css'
-import { selectHobbie } from '../store/actions/hobbies'
+import { selectHobbie ,deleteUserHobbie} from '../store/actions/hobbies'
 import classNames from 'classnames'
+
+interface IDeleteHobbie {
+    hobbieId: string
+    userId: string | null
+}
 interface Props {
     hobbies: any[]
     selectHobbie: (id: string) => void,
-    selectedHobbie: string | null
+    selectedHobbie: string | null,
+    selectedUser: string | null,
+    deleteUserHobbie: (data: IDeleteHobbie) => void
 }
 
-const HobbiesList: React.FC<Props> = ({ hobbies, selectHobbie, selectedHobbie }) => {
+const HobbiesList: React.FC<Props> = ({ hobbies, selectHobbie, selectedHobbie, selectedUser, deleteUserHobbie }) => {
 
     const onHobbieClick = (id: string) => {
         console.log('new one onHobbieClick ')
         selectHobbie(id)
     }
+    const onRemoveHobbie = (id: string) => {
+        selectHobbie(id);
+        console.log('REMOVE HOBBIE ')
+        console.log('selectedHobbie', selectedHobbie)
+        if (selectedUser) {
+            deleteUserHobbie({ hobbieId: id, userId: selectedUser })
+        }
+
+    }
     return (
 
         <div className='hobbiesList'>
-                {
-                    hobbies && hobbies.length > 0 ? hobbies.map((hobbie, index) => {
-                        return (
+            {
+                hobbies && hobbies.length > 0 ? hobbies.map((hobbie, index) => {
+                    return (
 
-                            <div key={hobbie._id} className={classNames('hobbie', { 'liClicked': selectedHobbie == hobbie._id })} onClick={()=> onHobbieClick(hobbie._id)} >
-                                <p className='item'>{hobbie.name}</p>
-                                <p className='item'>{hobbie.passionLevel}</p>
-                                <p className='item'>{hobbie.year}</p>
-                                <button className='removeBtn'>X</button>
-                            </div>
+                        <div key={hobbie._id} className={classNames('hobbie', { 'liClicked': selectedHobbie == hobbie._id })} onClick={() => onHobbieClick(hobbie._id)} >
+                            <p className='item'>{hobbie.name}</p>
+                            <p className='item'>{hobbie.passionLevel}</p>
+                            <p className='item'>{hobbie.year}</p>
+                            <button className='removeBtn' onClick={() => onRemoveHobbie(hobbie._id)}>X</button>
+                        </div>
 
-                        )
-                    }) : <div className='noHobbies'><p>No hobbies :(</p></div>
-                }
+                    )
+                }) : <div className='noHobbies'><p>No hobbies :(</p></div>
+            }
 
         </div>
     )
@@ -39,10 +55,13 @@ const HobbiesList: React.FC<Props> = ({ hobbies, selectHobbie, selectedHobbie })
 
 const mapStateToProps = (store: any) => ({
     selectedHobbie: store.hobbies.selectedHobbie,
+    selectedUser: store.users.selectedUser
 });
 
 const mapDispatchToProps = {
-    selectHobbie: selectHobbie
+    selectHobbie: selectHobbie,
+    deleteUserHobbie: deleteUserHobbie
+
 };
 
 
