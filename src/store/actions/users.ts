@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { ICreateUser, IUser } from '../../Interfaces/users';
+import { ICreateUser } from '../../Interfaces/users';
 import { triggerReducer, ACTION_TYPES } from '../constants/actiontypes';
 
 import { axiosGet, axiosPost } from './axios'

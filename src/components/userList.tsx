@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import '../styles/main/mainTable.css'
 import { selectUser } from '../store/actions/users'
@@ -24,7 +24,7 @@ const UserList: React.FC<Props> = ({ users, selectedUser, selectUser, selectHobb
                 {
                     !loader ? users.map((user, index) => {
                         return (
-                            <li className={classNames('', { 'liClicked': selectedUser == user._id })} onClick={() => onItemClick(user._id)} key={user._id} >{user.name}</li>
+                            <li className={classNames('', { 'liClicked': selectedUser === user._id })} onClick={() => onItemClick(user._id)} key={user._id} >{user.name}</li>
                         )
                     }) : <div className='loader'></div>
                 }

@@ -2,7 +2,7 @@ import 'react-notifications-component/dist/theme.css'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux'
-import { compose, configureStore } from '@reduxjs/toolkit'
+import { compose } from '@reduxjs/toolkit'
 import thunkMiddleware from 'redux-thunk'
 import { applyMiddleware, createStore } from 'redux'
 import './index.css';
