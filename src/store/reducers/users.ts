@@ -2,9 +2,8 @@ import { ACTION_TYPES } from "../constants/actiontypes";
 
 const defaultState = {
     users: [
-        { name: 'evan', _id: 30 },
     ],
-    selectedUser: null,
+    selectedHobbie: null,
 };
 
 export const users = (state = defaultState, action: any) => {
@@ -18,3 +17,4 @@ export const users = (state = defaultState, action: any) => {
             return state;
     }
 }
+

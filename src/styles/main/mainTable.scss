@@ -78,6 +78,7 @@
 }
 
 .hobbiesList {
+    flex: 6 0 0;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -96,4 +97,24 @@
     background-color: #00a8ff;
     color: white;
     font-weight: 600;
+}
+
+
+.noHobbies {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hobbie {
+    padding: 10px;
+    border-bottom: 1px solid $darkLight;
+    display: flex;
+    justify-content: space-around;
+}
+
+.item {
+    text-align: start;
+    flex : 1 1 0px
 }

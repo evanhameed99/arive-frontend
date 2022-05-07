@@ -3,31 +3,34 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import '../styles/main/mainTable.css'
 import { selectUser } from '../store/actions/users'
+import {selectHobbie} from '../store/actions/hobbies'
 interface Props {
     users: any[]
     selectedUser: string | null
-    selectUser: (id: string) => void
+    selectUser: (id: string | null) => void,
+    selectHobbie: (id: string | null) => void,
 }
 
-const UserList: React.FC<Props> = ({ users, selectedUser , selectUser }) => {
+const UserList: React.FC<Props> = ({ users, selectedUser, selectUser , selectHobbie }) => {
     console.log('selectedUser', selectedUser)
 
 
     const onItemClick = (id: string) => {
-        selectUser(id)
+        selectUser(id);
+        selectHobbie(null);
     }
     return (
         <div className='usersList'>
+            <ul className='usersUl'  >
             {
                 users.map((user, index) => {
                     return (
-                        <ul className='usersUl'  >
-                            <li className={classNames('', { 'liClicked': selectedUser == user._id })} onClick={() => onItemClick(user._id)} key={user._id} >{user.name}</li>
-                        </ul>
+                        <li className={classNames('', { 'liClicked': selectedUser == user._id })} onClick={() => onItemClick(user._id)} key={user._id} >{user.name}</li>
                     )
                 })
             }
-        </div>
+        </ul>
+        </div >
     )
 }
 
@@ -36,7 +39,8 @@ const mapStateToProps = (store: any) => ({
 });
 
 const mapDispatchToProps = {
-    selectUser: selectUser
+    selectUser: selectUser,
+    selectHobbie : selectHobbie
 };
 
 

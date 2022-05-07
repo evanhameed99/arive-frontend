@@ -1,51 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux';
 import '../styles/main/mainTable.css';
 import HobbiesList from './hobbiesList';
+import { getUserHobbies } from '../store/actions/hobbies';
 
-const hobbies = [
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-    {
-        id: 1,
-        name: 'Hiking',
-    },
-]
+interface Props {
+    hobbies: any[]
+    getUserHobbies: (userId: string) => void,
+    selectedUser: string | null
+}
 
-const Hobbies = () => {
+const Hobbies : React.FC<Props> = ({selectedUser , getUserHobbies , hobbies}) => {
+    console.log('the honb' , hobbies)
+    useEffect(() => {
+        if (selectedUser) {
+            getUserHobbies(selectedUser)
+        }
+
+        
+    }, [selectedUser])
     return (
         <div className='mainHobbies'>
             <form className='form'>
@@ -64,4 +37,15 @@ const Hobbies = () => {
     )
 }
 
-export default Hobbies
+
+const mapStateToProps = (store: any) => ({
+    hobbies: store.hobbies.hobbies,
+    selectedUser: store.users.selectedUser
+});
+
+const mapDispatchToProps = {
+    getUserHobbies: getUserHobbies,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hobbies);

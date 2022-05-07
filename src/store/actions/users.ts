@@ -8,7 +8,7 @@ export const getAllUsers = () => (dispatch: any) => new Promise((resolve, reject
     console.log('comming to the function')
     axiosGet('/users')
         .then((res: any) => {
-            console.log('the res', res)
+            console.log('the re of all users s', res)
             dispatch(triggerReducer(ACTION_TYPES.GET_ALL_USERS, { data: res.result }));
         })
         .catch((err: any) => {
