@@ -23,7 +23,6 @@ export const getAllUsers = () => (dispatch: Dispatch) => new Promise((resolve, r
 export const createUserAction = (data: ICreateUser) => (dispatch: Dispatch) => new Promise((resolve, reject) => {
     axiosPost('/users/create', data)
         .then((res: any) => {
-            console.log('ressss',res)
             getAllUsers()(dispatch);
             resolve(res);
         }
