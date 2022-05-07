@@ -13,6 +13,7 @@ interface Props {
 const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
 
     const [input, setInput] = useState<string>('');
+    // const [loader, setLoader] = useState<boolean>(true);
 
 
     useEffect(() => {
@@ -44,7 +45,7 @@ const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
                 <input value={input} onChange={onInoutChange} className='userInput' placeholder='Create User' required></input>
                 <button type='submit' className='addBtn'>Add</button>
             </form>
-            <UserList users={users} />
+            <UserList users={users}/>
         </div>
     )
 }

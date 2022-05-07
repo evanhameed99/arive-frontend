@@ -104,6 +104,10 @@
   overflow-y: scroll;
 }
 
+.usersUl {
+  position: relative;
+}
+
 .usersUl li {
   text-align: start;
   padding: 10px;
@@ -171,5 +175,40 @@
   outline: none;
   border: none;
   border-bottom: 1px solid #e4e4e4;
+}
+
+.loader {
+  position: relative;
+  top: 50px;
+  left: 80px;
+  border: 3px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 3px solid #3498db;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 /*# sourceMappingURL=maintable.css.map */
