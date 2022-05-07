@@ -1,10 +1,12 @@
+import { Dispatch } from 'redux';
+import { ICreateUser, IUser } from '../../Interfaces/users';
 import { triggerReducer, ACTION_TYPES } from '../constants/actiontypes';
 
 import { axiosGet, axiosPost } from './axios'
 
 
 
-export const getAllUsers = () => (dispatch: any) => new Promise((resolve, reject) => {
+export const getAllUsers = () => (dispatch: Dispatch) => new Promise((resolve, reject) => {
 
     axiosGet('/users')
         .then((res: any) => {
@@ -18,11 +20,12 @@ export const getAllUsers = () => (dispatch: any) => new Promise((resolve, reject
 })
 
 
-export const createUserAction = (data: any) => (dispatch: any) => new Promise((resolve, reject) => {
+export const createUserAction = (data: ICreateUser) => (dispatch: Dispatch) => new Promise((resolve, reject) => {
     axiosPost('/users/create', data)
         .then((res: any) => {
+            console.log('ressss',res)
             getAllUsers()(dispatch);
-            resolve(res.result);
+            resolve(res);
         }
         )
         .catch((err: any) => {
@@ -34,6 +37,6 @@ export const createUserAction = (data: any) => (dispatch: any) => new Promise((r
 
 
 
-export const selectUser = (user : string | null) => (dispatch: any) => {
+export const selectUser = (user : string | null) => (dispatch: Dispatch) => {
     dispatch(triggerReducer(ACTION_TYPES.SELECT_USER, { data : user }));
 }

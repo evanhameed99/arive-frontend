@@ -4,10 +4,10 @@ import '../styles/main/mainTable.css'
 import { selectHobbie ,deleteUserHobbie} from '../store/actions/hobbies'
 import classNames from 'classnames'
 import { ShowNotification } from '../utils/popover'
-import { IDeleteHobbie } from '../Interfaces/hobbie'
+import { IDeleteHobbie, IHobbie } from '../Interfaces/hobbie'
 
 interface Props {
-    hobbies: any[]
+    hobbies: IHobbie[]
     selectHobbie: (id: string) => void,
     selectedHobbie: string | null,
     selectedUser: string | null,

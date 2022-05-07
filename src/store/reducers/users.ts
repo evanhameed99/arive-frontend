@@ -3,7 +3,7 @@ import { ACTION_TYPES } from "../constants/actiontypes";
 const defaultState = {
     users: [
     ],
-    selectedHobbie: null,
+    selectedUser: null,
     loader: true
 };
 

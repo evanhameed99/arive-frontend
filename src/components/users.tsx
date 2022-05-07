@@ -4,11 +4,11 @@ import UserList from './userList'
 import { connect } from 'react-redux';
 import { getAllUsers, createUserAction } from '../store/actions/users';
 import { ShowNotification } from '../utils/popover'
-import { IUser } from '../Interfaces/users';
+import { ICreateUser, IUser } from '../Interfaces/users';
 interface Props {
     users: IUser[]
     getAllUsers: () => void,
-    createUserAction: (data: { name: string }) => any,
+    createUserAction: (data: ICreateUser) => any,
 }
 
 const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
@@ -27,9 +27,9 @@ const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
     const createUser = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (input !== '') {
-            createUserAction({ name: input }).then(() => {
+            createUserAction({ name: input }).then((user: IUser) => {
                 setInput('')
-                ShowNotification('Successfull', 'User created successfully', 'success', 3000)
+                ShowNotification('Successfull', `${user.name} created successfully`, 'success', 3000)
             })
                 .catch(() => {
                     ShowNotification('Something went wrong', 'User creation failed', 'danger', 3000)

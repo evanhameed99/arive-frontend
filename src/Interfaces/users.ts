@@ -7,3 +7,6 @@ export interface IUser {
     id: string
 } 
 
+export interface ICreateUser {
+    name: string
+}
