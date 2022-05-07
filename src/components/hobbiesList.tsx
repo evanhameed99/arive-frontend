@@ -26,6 +26,7 @@ const HobbiesList: React.FC<Props> = ({ hobbies, selectHobbie, selectedHobbie })
                                 <p className='item'>{hobbie.name}</p>
                                 <p className='item'>{hobbie.passionLevel}</p>
                                 <p className='item'>{hobbie.year}</p>
+                                <button className='removeBtn'>X</button>
                             </div>
 
                         )

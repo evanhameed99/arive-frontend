@@ -19,21 +19,21 @@ export const getUserHobbies = (userId : string | null) => (dispatch: any) => new
 })
 
 
-// export const createUserAction = (data: any) => (dispatch: any) => new Promise((resolve, reject) => {
-//     console.log('data inside action', data)
-//     axiosPost('/users/create', data)
-//         .then((res: any) => {
-//             console.log('the res', res)
-//             getAllUsers()(dispatch);
-//             resolve(res.result);
-//         }
-//         )
-//         .catch((err: any) => {
-//             reject(err);
-//         }
-//         )
+export const createUserHobbie = (data: any) => (dispatch: any) => new Promise((resolve, reject) => {
+    console.log('data inside action', data)
+    axiosPost(`/hobbies/create/${data.userId}`, data)
+        .then((res: any) => {
+            console.log('the res', res)
+            getUserHobbies(data.userId)(dispatch);
+            resolve(res.result);
+        }
+        )
+        .catch((err: any) => {
+            reject(err);
+        }
+        )
 
-// })
+})
 
 
 

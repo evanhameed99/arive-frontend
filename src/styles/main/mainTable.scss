@@ -112,9 +112,33 @@
     border-bottom: 1px solid $darkLight;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .item {
-    text-align: start;
-    flex : 1 1 0px
+    text-align: center;
+    flex : 3 1 0px;
+    outline: none;
+    border : none;
+    // border-bottom: 1px solid $darkLight;
+}
+
+.removeBtn{
+    flex : 1 1 0px;
+    height: 20px;
+    width: 10px;
+    background-color: rgb(132, 45, 45);
+    color: $backgroundWhite;
+    font-weight: 700;
+    border: none;
+}
+
+.formInput {
+    // padding: 15px;
+    text-align: center;
+    flex : 2 0 0;
+    outline: none;
+    border : none;
+    border-bottom: 1px solid $darkLight;
+  
 }
