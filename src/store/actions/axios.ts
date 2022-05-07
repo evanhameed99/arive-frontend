@@ -6,7 +6,7 @@ export function axiosGet(url: string, params = {}) {
 
         };
         //  console.log(ADMIN_API_URL + url)
-        Axios.get<any>('https://arrive-rest-api.herokuapp.com' + url, config)
+        Axios.get<any>(process.env.REACT_APP_API_URL + url, config)
             .then((res: any) => {
                 console.log('the res', res)
                 resolve(res.data);
@@ -23,7 +23,7 @@ export function axiosDelete(url:string, params = {}) {
       headers: { },
       params: { ...params },
     };
-    Axios.delete('http://localhost:4000' + url, config)
+    Axios.delete(process.env.REACT_APP_API_URL + url, config)
       .then((res) => {
         resolve(res.data);
       })
@@ -37,7 +37,7 @@ export function axiosPost(url: string, body = {}, header = {}) {
     return new Promise((resolve, reject) => {
         let config = {};
 
-        Axios.post('https://arrive-rest-api.herokuapp.com' + url, body, config)
+        Axios.post(process.env.REACT_APP_API_URL + url, body, config)
             .then((res) => {
                 resolve(res.data);
             })
@@ -47,48 +47,3 @@ export function axiosPost(url: string, body = {}, header = {}) {
     });
 }
 
-// export function axiosPut(url, body = {}, header = {}) {
-//   return new Promise((resolve, reject) => {
-//     const { user } = store.getState();
-//     let config = {};
-//     if (user) {
-//       config = {
-//         headers: {
-//           'jwt-token': user.token || '',
-//           'Content-Type': 'application/json',
-//           ...header,
-//         },
-//       };
-//     }
-//     Axios.put(ADMIN_API_URL + url, body, config)
-//       .then((res) => {
-//         resolve(res.data);
-//       })
-//       .catch((err) => {
-//         reject(err);
-//       });
-//   });
-// }
-
-// export function axiosPatch(url, body = {}, header = {}) {
-//   return new Promise((resolve, reject) => {
-//     const { user } = store.getState();
-//     let config = {};
-//     if (user) {
-//       config = {
-//         headers: {
-//           'jwt-token': user.token || '',
-//           'Content-Type': 'application/json',
-//           ...header,
-//         },
-//       };
-//     }
-//     Axios.patch(ADMIN_API_URL + url, body, config)
-//       .then((res) => {
-//         resolve(res.data);
-//       })
-//       .catch((err) => {
-//         reject(err);
-//       });
-//   });
-// }
