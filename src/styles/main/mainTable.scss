@@ -6,23 +6,21 @@
     border-collapse: collapse;
     background-color: $backgroundWhite;
     font-family: $general-font;
-    box-shadow: 0px 21px 50px 19px rgba(0,0,0,0.13);
+    box-shadow: 0px 21px 50px 19px $shadowColor;
 }
 
 
 .mainSection {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: space-between; 
+    @include flexbox($placeContent : space-between );
 }
 
 .header {
-    // background-color: $primaryColor;
     height: 15%;
     padding: 10px;
     text-align: start; 
-    border-bottom: 1px solid $darkLight;
+    border-bottom: $borderWidth $general-border-style $darkLight;
     color: $secondaryColor;
 
     h1{
@@ -33,48 +31,37 @@
 
 .mainUsers {
     height: 85%;
-    flex : 1 0 0;
-    border-right: 1px solid $darkLight;
-    // background-color: blue;
-    display: flex;
-    flex-direction: column;
+    border-right: $borderWidth $general-border-style $darkLight;
+    @include flexbox($direction : column , $grow : 1   );
 }
 
 .mainHobbies {
-
     height: 85%;
-    flex : 3 0 0;
-    display: flex;
-    flex-direction: column;
+    @include flexbox($direction : column , $grow : 4   );
 }
 
 .form{
     flex: 1 0 0;
-    display: flex;
-    // background-color: blue;
+   @include flexbox($grow : 1   );
 }
 .addBtn{
-    flex : 1 0 0;
+    @include flexbox($grow : 1   , $placeContent: center , $placeItems: center );
     border : none;
-    border-left: 1px solid $darkLight;
+    border-left: $borderWidth $general-border-style $darkLight;
 
 }
 .userInput{
     padding: 15px;
-    flex : 4 0 0;
+    @include flexbox($grow : 1   , $placeContent: center , $placeItems: center );
     border : none;
-    border-bottom: 1px solid $darkLight;
+    border-bottom: $borderWidth $general-border-style $darkLight;
     outline: none
 }
 
 .usersList {
     flex: 6 0 0;
-    // background-color: red;
     overflow: hidden;
-    overflow-y: scroll;
-    // display: flex;
-    // flex-direction: column;
-  
+    overflow-y: scroll; 
 }
 
 .hobbiesList {
@@ -90,32 +77,25 @@
 .usersUl li{
     text-align: start;
     padding: 10px;
-    border-bottom: 1px solid $darkLight;
-    // // height: 295px;
-    // list-style: none;
-    // background-color: red;
+    border-bottom: $borderWidth $general-border-style $darkLight;
 }
 
 .liClicked{
-    background-color: #00a8ff;
+    background-color: $primaryColor;
     color: white;
-    font-weight: 600;
+    font-weight: $weight-semi-bold ;
 }
 
 
 .noHobbies {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexbox($placeContent : center , $placeItems : center);
 }
 
 .hobbie {
     padding: 10px;
-    border-bottom: 1px solid $darkLight;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    border-bottom: $borderWidth $general-border-style $darkLight;
+    @include flexbox($placeContent : space-around , $placeItems : center);
 }
 
 .item {
@@ -123,26 +103,24 @@
     flex : 3 1 0px;
     outline: none;
     border : none;
-    // border-bottom: 1px solid $darkLight;
 }
 
 .removeBtn{
     flex : 1 1 0px;
     height: 20px;
     width: 10px;
-    background-color: rgb(132, 45, 45);
+    background-color: $red;
     color: $backgroundWhite;
-    font-weight: 700;
+    font-weight: $weight-bold ;
     border: none;
 }
 
 .formInput {
-    // padding: 15px;
     text-align: center;
     flex : 2 0 0;
     outline: none;
     border : none;
-    border-bottom: 1px solid $darkLight;
+    border-bottom: $borderWidth $general-border-style $darkLight;
   
 }
 
@@ -150,10 +128,9 @@
     position: relative;
     top: 50px;
     left: 80px;
-    border: 3px solid #f3f3f3;
+    border: 3px $general-border-style $backgroundWhite;
     border-radius: 50%;
-    border-top: 3px solid #3498db;
-    // background-color: red;
+    border-top: 3px $general-border-style $primaryColor;
     width: 40px;
     height: 40px;
     animation: spin 2s linear infinite;
