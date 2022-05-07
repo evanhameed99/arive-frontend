@@ -4,3 +4,8 @@ export interface IHobbie {
     year: number
     userId: string
 }
+
+export interface IDeleteHobbie {
+    hobbieId: string
+    userId: string | null
+}

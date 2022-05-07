@@ -4,11 +4,8 @@ import '../styles/main/mainTable.css'
 import { selectHobbie ,deleteUserHobbie} from '../store/actions/hobbies'
 import classNames from 'classnames'
 import { ShowNotification } from '../utils/popover'
+import { IDeleteHobbie } from '../Interfaces/hobbie'
 
-interface IDeleteHobbie {
-    hobbieId: string
-    userId: string | null
-}
 interface Props {
     hobbies: any[]
     selectHobbie: (id: string) => void,
@@ -40,7 +37,7 @@ const HobbiesList: React.FC<Props> = ({ hobbies, selectHobbie, selectedHobbie, s
                 hobbies && hobbies.length > 0 ? hobbies.map((hobbie, index) => {
                     return (
 
-                        <div key={hobbie._id} className={classNames('hobbie', { 'liClicked': selectedHobbie == hobbie._id })} onClick={() => onHobbieClick(hobbie._id)} >
+                        <div key={hobbie._id} className={classNames('hobbie', { 'liClicked': selectedHobbie === hobbie._id })} onClick={() => onHobbieClick(hobbie._id)} >
                             <p className='item'>{hobbie.name}</p>
                             <p className='item'>{hobbie.passionLevel}</p>
                             <p className='item'>{hobbie.year}</p>
