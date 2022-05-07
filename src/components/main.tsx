@@ -3,7 +3,7 @@ import '../styles/main/mainTable.css'
 import Header from './header'
 import Hobbies from './hobbies'
 import Users from './users'
-const Main = () => {
+const Main: React.FC = () => {
   return (
     <div className='mainTable'>
             <Header />

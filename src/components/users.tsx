@@ -4,8 +4,9 @@ import UserList from './userList'
 import { connect } from 'react-redux';
 import { getAllUsers, createUserAction } from '../store/actions/users';
 import { ShowNotification } from '../utils/popover'
+import { IUser } from '../Interfaces/users';
 interface Props {
-    users: any[]
+    users: IUser[]
     getAllUsers: () => void,
     createUserAction: (data: { name: string }) => any,
 }
@@ -13,7 +14,6 @@ interface Props {
 const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
 
     const [input, setInput] = useState<string>('');
-    // const [loader, setLoader] = useState<boolean>(true);
 
 
     useEffect(() => {

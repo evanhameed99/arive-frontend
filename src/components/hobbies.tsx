@@ -4,13 +4,13 @@ import '../styles/main/mainTable.css';
 import HobbiesList from './hobbiesList';
 import { getUserHobbies, createUserHobbie } from '../store/actions/hobbies';
 import { ShowNotification } from '../utils/popover';
-import { IHobbie } from '../Interfaces/hobbie';
+import { ICreateHobbie, IHobbie } from '../Interfaces/hobbie';
 
 
 interface Props {
-    hobbies: any[]
+    hobbies: IHobbie[]
     getUserHobbies: (userId: string) => void,
-    createUserHobbie: (data: IHobbie) => any,
+    createUserHobbie: (data: ICreateHobbie) => any,
     selectedUser: string | null
 }
 
@@ -33,7 +33,7 @@ const Hobbies: React.FC<Props> = ({ selectedUser, getUserHobbies, hobbies, creat
         }
 
         if (name && passionLevel !== 'Passion Level' && year && selectedUser) {
-            const data: IHobbie = {
+            const data = {
                 name,
                 passionLevel,
                 year,

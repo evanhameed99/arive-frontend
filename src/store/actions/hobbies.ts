@@ -1,3 +1,5 @@
+
+import { ICreateHobbie } from '../../Interfaces/hobbie';
 import { triggerReducer, ACTION_TYPES } from '../constants/actiontypes';
 
 import { axiosDelete, axiosGet, axiosPost } from './axios'
@@ -17,7 +19,7 @@ export const getUserHobbies = (userId: string | null) => (dispatch: any) => new 
 })
 
 
-export const createUserHobbie = (data: any) => (dispatch: any) => new Promise((resolve, reject) => {
+export const createUserHobbie = (data: ICreateHobbie) => (dispatch : any) => new Promise((resolve, reject) => {
     axiosPost(`/hobbies/create/${data.userId}`, data)
         .then((res: any) => {
             getUserHobbies(data.userId)(dispatch);
