@@ -20,13 +20,10 @@ interface Props {
 const HobbiesList: React.FC<Props> = ({ hobbies, selectHobbie, selectedHobbie, selectedUser, deleteUserHobbie }) => {
 
     const onHobbieClick = (id: string) => {
-        console.log('new one onHobbieClick ')
         selectHobbie(id)
     }
     const onRemoveHobbie = (id: string) => {
         selectHobbie(id);
-        console.log('REMOVE HOBBIE ')
-        console.log('selectedHobbie', selectedHobbie)
         if (selectedUser) {
             deleteUserHobbie({ hobbieId: id, userId: selectedUser }).then(() => {
                 ShowNotification('Successfull', 'Hobbie deleted successfully', 'success', 2000)

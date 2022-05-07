@@ -13,9 +13,7 @@ interface Props {
 }
 
 const UserList: React.FC<Props> = ({ users, selectedUser, selectUser, selectHobbie ,loader}) => {
-    console.log('selectedUser', selectedUser)
-
-
+    
     const onItemClick = (id: string) => {
         selectUser(id);
         selectHobbie(null);

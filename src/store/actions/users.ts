@@ -5,10 +5,9 @@ import { axiosGet, axiosPost } from './axios'
 
 
 export const getAllUsers = () => (dispatch: any) => new Promise((resolve, reject) => {
-    console.log('comming to the function')
+
     axiosGet('/users')
         .then((res: any) => {
-            console.log('the re of all users s', res)
             dispatch(triggerReducer(ACTION_TYPES.GET_ALL_USERS, { data: res.result }));
         })
         .catch((err: any) => {
@@ -20,10 +19,8 @@ export const getAllUsers = () => (dispatch: any) => new Promise((resolve, reject
 
 
 export const createUserAction = (data: any) => (dispatch: any) => new Promise((resolve, reject) => {
-    console.log('data inside action', data)
     axiosPost('/users/create', data)
         .then((res: any) => {
-            console.log('the res', res)
             getAllUsers()(dispatch);
             resolve(res.result);
         }

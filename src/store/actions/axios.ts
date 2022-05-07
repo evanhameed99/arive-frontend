@@ -5,10 +5,8 @@ export function axiosGet(url: string, params = {}) {
         const config = {
 
         };
-        //  console.log(ADMIN_API_URL + url)
         Axios.get<any>(process.env.REACT_APP_API_URL + url, config)
             .then((res: any) => {
-                console.log('the res', res)
                 resolve(res.data);
             })
             .catch((err: any) => {

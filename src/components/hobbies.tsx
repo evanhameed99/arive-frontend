@@ -19,8 +19,6 @@ interface Props {
 }
 
 const Hobbies: React.FC<Props> = ({ selectedUser, getUserHobbies, hobbies, createUserHobbie }) => {
-    console.log('the honb', hobbies)
-
     const [name, setName] = useState<string>('');
     const [passionLevel, setPassionLevel] = useState<string>('Passion Level');
     const [year, setYear] = useState<number>(0);
@@ -39,7 +37,6 @@ const Hobbies: React.FC<Props> = ({ selectedUser, getUserHobbies, hobbies, creat
         }
 
         if (name && passionLevel !== 'Passion Level' && year && selectedUser) {
-            console.log('inside condition')
             const data: IHobbie = {
                 name,
                 passionLevel,

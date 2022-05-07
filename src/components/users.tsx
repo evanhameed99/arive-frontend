@@ -25,11 +25,9 @@ const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
     }
 
     const createUser = (e: React.FormEvent<HTMLFormElement>) => {
-        console.log('cliecked')
         e.preventDefault();
         if (input !== '') {
             createUserAction({ name: input }).then(() => {
-                console.log('inside then ')
                 setInput('')
                 ShowNotification('Successfull', 'User created successfully', 'success', 3000)
             })
@@ -45,7 +43,7 @@ const Users: React.FC<Props> = ({ users, getAllUsers, createUserAction }) => {
                 <input value={input} onChange={onInoutChange} className='userInput' placeholder='Create User' required></input>
                 <button type='submit' className='addBtn'>Add</button>
             </form>
-            <UserList users={users}/>
+            <UserList users={users} />
         </div>
     )
 }
